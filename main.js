@@ -13,6 +13,14 @@ function main() {
     console.log(startRow);
     console.log(endRow);
 
+    const second = sheet.getRange("E2").getValue();
+
+    // 間隔が1000ms以上の場合は開く
+
+    if(second < 1000) {
+        throw "開く間隔は1000ms以上にしてください";
+    }
+
     for(let i = 0; i < endRow - startRow + 1; i++) {
         const url = sheet.getRange(startRow + i, 1).getValue();
 
@@ -22,6 +30,7 @@ function main() {
         openurl(url);
         console.log(url);
     }
+
 }
 
 function openurl(url) {
